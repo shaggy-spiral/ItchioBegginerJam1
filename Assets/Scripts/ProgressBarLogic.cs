@@ -7,6 +7,9 @@ public class ProgressBarLogic : MonoBehaviour
 {
 
     Slider slider;
+    ParticleSystem particleSys;
+    private float targetProgress = 0.0f;
+    [SerializeField] public float fillSpeed = 1.0f;
 
     void  Awake()
     {
@@ -14,6 +17,11 @@ public class ProgressBarLogic : MonoBehaviour
         if (slider == null)
         {
             Debug.Log("Error: <Slider> not found!");
+        }
+        particleSys = GameObject.Find("ParticleEffect").GetComponent<ParticleSystem>();
+        if (particleSys == null)
+        {
+            Debug.Log("Error: <ParticleSystem> not found!");
         }
     }
     void Start()
@@ -24,12 +32,24 @@ public class ProgressBarLogic : MonoBehaviour
 
     void Update()
     {
+        if (slider.value < targetProgress)
+        {
+            slider.value += fillSpeed * Time.deltaTime;
+            if (!particleSys.isPlaying)
+            {
+                particleSys.Play();
+            }
+            else
+            {
+                particleSys.Stop();
+            }
+        }
         
     }
 
     public void IncrementSlider(float increment)
     {
-        slider.value += increment;
-        Debug.Log(slider.value);
+        targetProgress = slider.value + increment;    
+        Debug.Log(targetProgress);
     }
 }

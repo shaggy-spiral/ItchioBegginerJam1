@@ -23,14 +23,15 @@ public class ChickenLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleInput();
+        
     }
 
-    void HandleInput()
+    void OnMouseDown()
     {
         if(Input.GetMouseButtonDown(0))
         {
             progressBar.IncrementSlider(1);
+            FloatingTextManager.Instance.CreateText(transform.position);
         }
     }
 }
