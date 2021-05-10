@@ -6,9 +6,17 @@ using UnityEngine.UI;
 public class ChickenLogic : MonoBehaviour
 {
     ProgressBarLogic progressBar;
+    GameLogic gameLogic;
     private float incrementValue = 1.0f;
     void Awake()
     {
+        gameLogic = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<GameLogic>();
+        if (gameLogic == null)
+        {
+            Debug.Log("Error: <GameLogic> not found!");
+        } 
+        // Test startingLevel        
+        Debug.Log("I'm in level: " + gameLogic.currentLevel);
         Debug.Log("Bóque bóque!");
         progressBar = GameObject.FindGameObjectWithTag("ProgressBar").GetComponent<ProgressBarLogic>();
         if (progressBar == null)
@@ -33,6 +41,9 @@ public class ChickenLogic : MonoBehaviour
         {
             progressBar.IncrementSlider(incrementValue);
             FloatingTextManager.Instance.CreateText(transform.position, incrementValue.ToString(), Color.white);
+            
         }
     }
+
+    
 }

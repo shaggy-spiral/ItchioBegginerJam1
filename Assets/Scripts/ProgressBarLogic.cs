@@ -3,16 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class ProgressBarLogic : MonoBehaviour
 {
 
     Slider slider;
     ParticleSystem particleSys;
-    private float targetProgress = 0.0f;
+    GameLogic gameLogic;
+    
+    private float targetProgress;
     [SerializeField] public float fillSpeed = 1.0f;
 
-    void  Awake()
+    void Awake()
     {
+
+        gameLogic = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<GameLogic>();
+        if (gameLogic == null)
+        {
+            Debug.Log("Error: <GameLogic> not found!");
+        } 
         slider = GetComponent<Slider>();
         if (slider == null)
         {
@@ -27,11 +36,17 @@ public class ProgressBarLogic : MonoBehaviour
     void Start()
     {
         slider.minValue = 0;
-        slider.maxValue = 100;
+        slider.value = 0;
+        slider.maxValue = gameLogic.levelObjective;
+        
     }
 
     void Update()
     {
+
+
+
+
         if (slider.value < targetProgress)
         {
             slider.value += fillSpeed * Time.deltaTime;
@@ -44,12 +59,20 @@ public class ProgressBarLogic : MonoBehaviour
                 particleSys.Stop();
             }
         }
+
         
     }
 
     public void IncrementSlider(float increment)
     {
         targetProgress = slider.value + increment;    
-        Debug.Log(targetProgress);
+        
+    }
+
+    private void ChangeLevel()
+    {
+        slider.minValue = 0;
+        slider.maxValue = gameLogic.levelObjective;
+
     }
 }
