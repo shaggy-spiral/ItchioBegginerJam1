@@ -63,16 +63,22 @@ public class ProgressBarLogic : MonoBehaviour
         
     }
 
-    public void IncrementSlider(float increment)
+    public void IncrementSlider(int increment)
     {
         targetProgress = slider.value + increment;    
-        
+        Debug.Log("Slider value: " + slider.value);
+
     }
 
-    private void ChangeLevel()
+    public void ChangeLevel()
     {
         slider.minValue = 0;
         slider.maxValue = gameLogic.levelObjective;
-
+        slider.value = 0;
+        targetProgress = 0;
+        gameLogic.currentHeatLevel = 0;
+        Debug.Log("Min value: " + slider.minValue);
+        Debug.Log("Max value: " + slider.maxValue);
+        Debug.Log("Slider value: " + slider.value);
     }
 }

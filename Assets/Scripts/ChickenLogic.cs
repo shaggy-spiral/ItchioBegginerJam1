@@ -7,7 +7,7 @@ public class ChickenLogic : MonoBehaviour
 {
     ProgressBarLogic progressBar;
     GameLogic gameLogic;
-    private float incrementValue = 1.0f;
+    private int incrementValue = 1;
     void Awake()
     {
         gameLogic = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<GameLogic>();
@@ -39,6 +39,7 @@ public class ChickenLogic : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
+            gameLogic.currentHeatLevel += incrementValue;
             progressBar.IncrementSlider(incrementValue);
             FloatingTextManager.Instance.CreateText(transform.position, incrementValue.ToString(), Color.white);
             

@@ -512,9 +512,9 @@ RectTransform:
   m_Father: {fileID: 1654685372}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 84, y: -292}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 84, y: 92}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1020290009
@@ -5417,6 +5417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1378915461}
+  - component: {fileID: 1378915462}
   m_Layer: 0
   m_Name: GameGlobal
   m_TagString: GameLogic
@@ -5438,6 +5439,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1378915462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378915460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d860180f76a82638307b852921951f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLevel: 0
+  levelObjective: 0
+  currentHeatLevel: 0
+  maxPlayedLevel: 0
 --- !u!1 &1390282323
 GameObject:
   m_ObjectHideFlags: 0
@@ -5451,7 +5468,7 @@ GameObject:
   - component: {fileID: 1390282325}
   m_Layer: 5
   m_Name: ProgressText
-  m_TagString: Untagged
+  m_TagString: ProgressBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5599,10 +5616,10 @@ RectTransform:
   m_Father: {fileID: 1654685372}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 614.33, y: 320.44}
-  m_SizeDelta: {x: 45.35, y: 51.12}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -68.66998, y: -63.559998}
+  m_SizeDelta: {x: 45.349976, y: 51.119995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1508076060
 MonoBehaviour:
@@ -5860,9 +5877,9 @@ RectTransform:
   m_Father: {fileID: 1654685372}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -79.54999, y: -283.7575}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -79.54999, y: 100.24249}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1732452457
@@ -6050,7 +6067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3ca1a5664b3c075b6025d6eb02f697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fillSpeed: 1
+  fillSpeed: 10
 --- !u!1 &2039790597
 GameObject:
   m_ObjectHideFlags: 0
@@ -6294,7 +6311,7 @@ GameObject:
   - component: {fileID: 2144654142}
   m_Layer: 0
   m_Name: chicken_4
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6339,7 +6356,7 @@ SpriteRenderer:
   m_SortingLayerID: -406540473
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7067989680129746051, guid: 373edcd1132fb3c3185bfdf5e911a9b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c6c4f2c93f57c88e390c9827dd7d86a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6393,7 +6410,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 30, y: 25}
+    oldSize: {x: 32, y: 32}
     newSize: {x: 0.3, y: 0.25}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
