@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ChickenLogic : MonoBehaviour
 {
     ProgressBarLogic progressBar;
+    private float incrementValue = 1.0f;
     void Awake()
     {
         Debug.Log("Bóque bóque!");
@@ -30,8 +31,8 @@ public class ChickenLogic : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            progressBar.IncrementSlider(1);
-            FloatingTextManager.Instance.CreateText(transform.position);
+            progressBar.IncrementSlider(incrementValue);
+            FloatingTextManager.Instance.CreateText(transform.position, incrementValue.ToString(), Color.white);
         }
     }
 }
