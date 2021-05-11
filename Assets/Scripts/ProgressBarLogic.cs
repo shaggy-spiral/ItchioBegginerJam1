@@ -43,10 +43,6 @@ public class ProgressBarLogic : MonoBehaviour
 
     void Update()
     {
-
-
-
-
         if (slider.value < targetProgress)
         {
             slider.value += fillSpeed * Time.deltaTime;
@@ -58,9 +54,7 @@ public class ProgressBarLogic : MonoBehaviour
             {
                 particleSys.Stop();
             }
-        }
-
-        
+        }        
     }
 
     public void IncrementSlider(int increment)

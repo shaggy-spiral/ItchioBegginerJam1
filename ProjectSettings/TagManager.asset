@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ProgressBar
   - GameLogic
+  - LevelText
   layers:
   - Default
   - TransparentFX
