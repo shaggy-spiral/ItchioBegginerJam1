@@ -32,5 +32,6 @@ public class FloatingTextManager : MonoBehaviour
         newText.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         newText.GetComponent<FloatingText>().Initialize(speed, direction, fadeTime);
         newText.GetComponent<Text>().text = text;
+        newText.GetComponent<Text>().color = color;
     }
 }

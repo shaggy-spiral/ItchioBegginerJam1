@@ -7,7 +7,7 @@ public class ChickenLogic : MonoBehaviour
 {
     ProgressBarLogic progressBar;
     GameLogic gameLogic;
-    private int incrementValue = 1;
+    private int incrementValue;
     void Awake()
     {
         gameLogic = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<GameLogic>();
@@ -15,9 +15,6 @@ public class ChickenLogic : MonoBehaviour
         {
             Debug.Log("Error: <GameLogic> not found!");
         } 
-        // Test startingLevel        
-        Debug.Log("I'm in level: " + gameLogic.currentLevel);
-        Debug.Log("Bóque bóque!");
         progressBar = GameObject.FindGameObjectWithTag("ProgressBar").GetComponent<ProgressBarLogic>();
         if (progressBar == null)
         {
@@ -26,10 +23,9 @@ public class ChickenLogic : MonoBehaviour
     }
     void Start()
     {
-        
+        incrementValue = 1;
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -39,12 +35,16 @@ public class ChickenLogic : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
+            // Validate if game is paused?
+            gameLogic.isRunning = true;
             gameLogic.currentHeatLevel += incrementValue;
             progressBar.IncrementSlider(incrementValue);
-            FloatingTextManager.Instance.CreateText(transform.position, incrementValue.ToString(), Color.white);
-            
+            FloatingTextManager.Instance.CreateText(transform.position, incrementValue.ToString(), Color.white);    
         }
     }
 
-    
+    void UpgradeFeathers()
+    {
+
+    }
 }

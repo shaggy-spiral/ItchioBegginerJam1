@@ -10,7 +10,6 @@ public class ProgressBarLogic : MonoBehaviour
     Slider slider;
     ParticleSystem particleSys;
     GameLogic gameLogic;
-    
     private float targetProgress;
     [SerializeField] public float fillSpeed = 1.0f;
 
@@ -59,9 +58,7 @@ public class ProgressBarLogic : MonoBehaviour
 
     public void IncrementSlider(int increment)
     {
-        targetProgress = slider.value + increment;    
-        Debug.Log("Slider value: " + slider.value);
-
+        targetProgress = slider.value + increment;            
     }
 
     public void ChangeLevel()
@@ -72,7 +69,6 @@ public class ProgressBarLogic : MonoBehaviour
         targetProgress = 0;
         gameLogic.currentHeatLevel = 0;
         Debug.Log("Min value: " + slider.minValue);
-        Debug.Log("Max value: " + slider.maxValue);
-        Debug.Log("Slider value: " + slider.value);
+        Debug.Log("Max value: " + slider.maxValue);        
     }
 }
