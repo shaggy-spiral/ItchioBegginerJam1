@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Numerics;
 
 public class ProgressBarLogic : MonoBehaviour
 {
@@ -15,7 +15,6 @@ public class ProgressBarLogic : MonoBehaviour
 
     void Awake()
     {
-
         gameLogic = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<GameLogic>();
         if (gameLogic == null)
         {
@@ -36,35 +35,19 @@ public class ProgressBarLogic : MonoBehaviour
     {
         slider.minValue = 0;
         slider.value = 0;
-        slider.maxValue = gameLogic.levelObjective;
-        
+        slider.maxValue = 1;
     }
 
-    void Update()
+    public void IncrementSlider(BigInteger increment)
     {
-        if (slider.value < targetProgress)
-        {
-            slider.value += fillSpeed * Time.deltaTime;
-            if (!particleSys.isPlaying)
-            {
-                particleSys.Play();
-            }
-            else
-            {
-                particleSys.Stop();
-            }
-        }        
-    }
-
-    public void IncrementSlider(int increment)
-    {
-        targetProgress = slider.value + increment;            
+        float incrementRatioNoIncrement = (float)((double)(gameLogic.currentHeatLevel) / (double)gameLogic.levelObjective);
+        float incrementRatioWithIncrement = (float)((double)(gameLogic.currentHeatLevel + increment) / (double)gameLogic.levelObjective);
+        targetProgress = slider.value + (incrementRatioWithIncrement - incrementRatioNoIncrement);
+        slider.value += (incrementRatioWithIncrement - incrementRatioNoIncrement);       
     }
 
     public void ChangeLevel()
     {
-        slider.minValue = 0;
-        slider.maxValue = gameLogic.levelObjective;
         slider.value = 0;
         targetProgress = 0;
         gameLogic.currentHeatLevel = 0;

@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Numerics;
 
 public class ChickenLogic : MonoBehaviour
 {
     ProgressBarLogic progressBar;
     GameLogic gameLogic;
-    private int incrementValue;
+    private BigInteger incrementValue;
     void Awake()
     {
         gameLogic = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<GameLogic>();
@@ -43,8 +44,8 @@ public class ChickenLogic : MonoBehaviour
         }
     }
 
-    void UpgradeFeathers()
+    public void UpgradeFeathers(int upgradeLevel)
     {
-
+        incrementValue *= 2;
     }
 }
