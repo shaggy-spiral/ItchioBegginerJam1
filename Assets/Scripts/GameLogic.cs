@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Numerics;
+using UnityEngine.SceneManagement;
 
 public class GameLogic : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class GameLogic : MonoBehaviour
     TimerScript timerScript;
     ChickenLogic chickenLogic;
     SpriteRenderer pauseOverlay;
+    GameObject exitButton;
     
     void Awake()
     {
@@ -76,6 +78,15 @@ public class GameLogic : MonoBehaviour
         {
             Debug.Log("Error: <pauseOverlay> not found!");
         }
+        exitButton = GameObject.Find("ExitButton");
+        if (exitButton == null)
+        {
+            Debug.Log("Error: <exitButton> not found!");
+        }
+        else
+        {
+            exitButton.SetActive(false);
+        }
         chickAnimationScript = GameObject.Find("ChickAnimation").GetComponent<ChickAnimationScript>();
         InitGame();
     }
@@ -90,6 +101,7 @@ public class GameLogic : MonoBehaviour
         if (eggCoin >= upgradeCost)
         {
             upgradeButton.SetActive(true);
+            upgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = "WARMER FEATHERS\n" + "(" + upgradeCost + ")";
         }
         else
         {
@@ -230,12 +242,19 @@ public class GameLogic : MonoBehaviour
         {
             Time.timeScale = 0;
             pauseOverlay.enabled = true;
+            exitButton.SetActive(true);
         }
         else
         {
             Time.timeScale = 1;
             pauseOverlay.enabled = false;
+            exitButton.SetActive(false);
         }
+    }
+
+    public void ExitButtonClick()
+    {
+        SceneManager.LoadScene("IntroScreen");
     }
 
 }
