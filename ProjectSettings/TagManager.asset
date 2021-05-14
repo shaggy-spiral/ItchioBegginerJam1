@@ -53,3 +53,6 @@ TagManager:
   - name: UI
     uniqueID: 1556943237
     locked: 0
+  - name: PauseOverlay
+    uniqueID: 3762464113
+    locked: 0

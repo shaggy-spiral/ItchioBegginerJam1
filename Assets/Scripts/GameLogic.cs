@@ -27,6 +27,7 @@ public class GameLogic : MonoBehaviour
     ChickAnimationScript chickAnimationScript;
     TimerScript timerScript;
     ChickenLogic chickenLogic;
+    SpriteRenderer pauseOverlay;
     
     void Awake()
     {
@@ -69,6 +70,11 @@ public class GameLogic : MonoBehaviour
         if (chickenLogic == null)
         {
             Debug.Log("Error: <chickenLogic> not found!");
+        }
+        pauseOverlay = GameObject.Find("PauseOverlay").GetComponent<SpriteRenderer>();
+        if (pauseOverlay == null)
+        {
+            Debug.Log("Error: <pauseOverlay> not found!");
         }
         chickAnimationScript = GameObject.Find("ChickAnimation").GetComponent<ChickAnimationScript>();
         InitGame();
@@ -217,13 +223,19 @@ public class GameLogic : MonoBehaviour
         }
     }
 
-    public void ExitClick()
+    public void PauseClick()
     {
         isPaused = !isPaused;
-        if (!isPaused)
+        if (isPaused)
+        {
             Time.timeScale = 0;
+            pauseOverlay.enabled = true;
+        }
         else
+        {
             Time.timeScale = 1;
+            pauseOverlay.enabled = false;
+        }
     }
 
 }
