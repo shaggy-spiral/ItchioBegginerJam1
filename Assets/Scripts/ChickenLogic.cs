@@ -36,11 +36,17 @@ public class ChickenLogic : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            // Validate if game is paused?
-            gameLogic.isRunning = true;
-            gameLogic.currentHeatLevel += incrementValue;
-            progressBar.IncrementSlider(incrementValue);
-            FloatingTextManager.Instance.CreateText(transform.position, incrementValue.ToString(), Color.white);    
+            if (gameLogic.isPaused)
+            {
+                return;
+            }
+            else
+            {
+                gameLogic.isRunning = true;
+                gameLogic.currentHeatLevel += incrementValue;
+                progressBar.IncrementSlider(incrementValue);
+                FloatingTextManager.Instance.CreateText(transform.position, incrementValue.ToString(), Color.white);
+            }
         }
     }
 

@@ -219,11 +219,11 @@ public class GameLogic : MonoBehaviour
 
     public void ExitClick()
     {
+        isPaused = !isPaused;
         if (!isPaused)
-        {
             Time.timeScale = 0;
-            isPaused = true;
-        }
+        else
+            Time.timeScale = 1;
     }
 
 }

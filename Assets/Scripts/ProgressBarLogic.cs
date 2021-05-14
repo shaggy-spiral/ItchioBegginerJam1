@@ -50,8 +50,6 @@ public class ProgressBarLogic : MonoBehaviour
     {
         slider.value = 0;
         targetProgress = 0;
-        gameLogic.currentHeatLevel = 0;
-        Debug.Log("Min value: " + slider.minValue);
-        Debug.Log("Max value: " + slider.maxValue);        
+        gameLogic.currentHeatLevel = 0;  
     }
 }
