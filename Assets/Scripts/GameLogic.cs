@@ -112,7 +112,8 @@ public class GameLogic : MonoBehaviour
 
     void CalculateObjective(int level)
     {
-        float formulaValue = 9.0f * Mathf.Pow(1.08f, (float)level);
+        // Next level eggCoin cost
+        float formulaValue = 9.0f * Mathf.Pow(1.07f, (float)level);
         levelObjective = Mathf.FloorToInt(formulaValue);
     }
 
@@ -206,7 +207,8 @@ public class GameLogic : MonoBehaviour
 
     BigInteger CalculateNextUpgrade(int level)
     {
-        BigInteger cost = 50 * (int)Mathf.Pow(1.5f, upgradeLevel);
+        //BigInteger cost = 10 * (int)Mathf.Pow(1.1f, upgradeLevel);
+        BigInteger cost = 8 * (int)Mathf.Pow(upgradeLevel, 2);
         return cost;
     }
 
@@ -226,9 +228,9 @@ public class GameLogic : MonoBehaviour
     {
         if (!isPaused)
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) && currentLevel >= minLevel)
                 PreviousLevel();
-            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) && currentLevel < maxPlayedLevel)
                 NextLevel();
             if (Input.GetKeyDown(KeyCode.Space) && upgradeButton.activeInHierarchy)
                 ClickBuyUpgrade();

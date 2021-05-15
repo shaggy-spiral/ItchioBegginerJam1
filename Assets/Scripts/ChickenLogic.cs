@@ -52,6 +52,7 @@ public class ChickenLogic : MonoBehaviour
 
     public void UpgradeFeathers(int upgradeLevel)
     {
-        incrementValue *= 2;
+        // Upgrade incremental value formula
+        incrementValue += gameLogic.upgradeLevel;
     }
 }
